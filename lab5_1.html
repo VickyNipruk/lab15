@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link href="css/style.css" rel="stylesheet">
+        <title>Завдання 1</title>
+    </head>
+    <body>
+        <h1>Результат:</h1>
+        <div style="color: rgb(0, 62, 52); font-size: 25px;">
+            <script>
+                function processString(input) {
+                    const replacedString = input.replace(/\*/g, '++'); //заміна * на ++
+                    
+                    const countF = (replacedString.match(/F/g) || []).length; //рахує кількість F
+                    const countD = (replacedString.match(/D/g) || []).length; //рахує кількість D
+                    const totalCount = countF + countD;
+
+                    return { replacedString, totalCount };
+                }
+
+                function main() {
+                    const userInput = prompt("Введіть рядок:");
+                    
+                    if (userInput) {
+                        const { replacedString, totalCount } = processString(userInput);
+
+                        document.write(`<p><strong>Введений рядок: </strong>`+userInput+'</p>');
+                        document.write(`<p><strong>Рядок після заміни ('*' на '++'): </strong> ${replacedString}</p>`);
+                        document.write(`<p><strong>Загальна кількість 'F' та 'D': </strong> ${totalCount}</p>`);
+                    } else {
+                        document.write("<p>Ви не ввели рядок!</p>");
+                    }
+                }
+                main();
+            </script>
+        </div>
+
+        <div class="return">
+            <a href="index.html" class="button">Повернутись на головну</a>
+        </div>
+    </body>
+</html>

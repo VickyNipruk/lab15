@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link href="css/style.css" rel="stylesheet">
+        <title>Завдання 2</title>
+    </head>
+    <body>
+        <h1>Результат:</h1>
+        <div style="color: rgb(0, 62, 52); font-size: 25px;">
+            <script>
+                function processString(input) {
+
+                   const words = input.split(/\s+/)
+                    let secondWord = ""; //виділення другого слова
+                    if (words.length > 1){
+                        secondWord = words[1].split('').join(' '); //розділення другого слова
+                    }
+                    
+                    //обчислення кількості слів, які закінчу.ться на е
+                    const endWithE = words.filter(words=>words.endsWith('е')).length;
+
+                    return { secondWord, endWithE };
+                }
+
+                function main() {
+                    const userInput = prompt("Введіть рядок:");
+                    
+                    if (userInput) {
+                        const { secondWord, endWithE } = processString(userInput);
+
+                        document.write(`<p><strong>Введений рядок: </strong>`+userInput+'</p>');
+                        document.write(`<p><strong>Поділ другого слова: </strong> ${secondWord}</p>`);
+                        document.write(`<p><strong>Кількість слів, які закінчуються на 'е': </strong> ${endWithE}</p>`);
+                    } else {
+                        document.write("<p>Ви не ввели рядок!</p>");
+                    }
+                }
+                main();
+            </script>
+        </div>
+
+        <div class="return">
+            <a href="index.html" class="button">Повернутись на головну</a>
+        </div>
+    </body>
+</html>

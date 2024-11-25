@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link href="css/style.css" rel="stylesheet">
+        <title>Завдання 3</title>
+    </head>
+    <body>
+        <h1>Результат:</h1>
+        <div style="color: rgb(0, 62, 52); font-size: 25px;">
+            <script>
+                //створюємо алфавіт
+                function shiftLetter(letter) {
+                    const alphabet = 'абвгґдеєжзишїйклмнопрстуфхцчшщьюя'; 
+                    const index = alphabet.indexOf(letter);
+
+                    if (index === -1) {
+                        return letter;
+                    }
+
+                    return alphabet[(index + 1) % alphabet.length];
+                }
+
+                //функція заміни літер на наступну зі створеного алфавіту
+                function processString(input) {
+                    return input
+                        .split('')
+                        .map(char => {
+                            const lowerChar = char.toLowerCase(); 
+                            const shiftedChar = shiftLetter(lowerChar); 
+                            
+                            return char === lowerChar ? shiftedChar : shiftedChar.toUpperCase();
+                        })
+                        .join('');  
+                }
+
+                function main() {
+                    const userInput = prompt("Введіть рядок:");
+                    
+                    if (userInput) {
+                        const transform = processString(userInput);
+
+                        document.write(`<p><strong>Введений рядок: </strong>`+userInput+'</p>');
+                        document.write(`<p><strong>Зашифрований текст: </strong> ${transform}</p>`);
+                        } else {
+                        document.write("<p>Ви не ввели рядок!</p>");
+                    }
+                }
+                main();
+            </script>
+        </div>
+
+        <div class="return">
+            <a href="index.html" class="button">Повернутись на головну</a>
+        </div>
+    </body>
+</html>

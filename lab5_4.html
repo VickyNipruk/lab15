@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Завдання 4</title>
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <h1>Результат:</h1>
+    <div id="output" style="margin-top: 20px; font-size: 18px;"></div>
+
+    <script>
+        // Функція для перемішування літер у слові
+        function shuffleWord(word) {
+            if (word.length <= 2) {
+                return word; 
+            }
+
+            // Виділяємо середні літери
+            let middleChars = word.slice(1, -1).split('');
+
+            // Перемішування середніх літер
+            for (let i = middleChars.length - 1; i > 0; i--) {
+                let j = Math.floor(Math.random() * (i + 1)); 
+                [middleChars[i], middleChars[j]] = [middleChars[j], middleChars[i]]; 
+            }
+
+            return word[0] + middleChars.join('') + word[word.length - 1];
+        }
+
+        // Функція для шифрування тексту
+        function encryptText(text) {
+            return text
+                .split(' ') 
+                .map(shuffleWord) 
+                .join(' '); 
+        }
+
+        // Запит на введення рядка і обробка
+        const userInput = prompt("Введіть рядок:"); 
+        
+        if (userInput) {
+            const transformedText = encryptText(userInput); 
+
+            document.getElementById("output").innerHTML = `
+                <p><strong>Введений рядок:</strong> ${userInput}</p>
+                <p><strong>Зашифрований текст:</strong> ${transformedText}</p>
+            `;
+        } else {
+            document.getElementById("output").innerHTML = "<p><strong>Ви не ввели рядок!</strong></p>";
+        }
+    </script>
+
+    <div class="return">
+        <a href="index.html" class="button">Повернутись на головну</a>
+    </div>
+</body>
+</html>
